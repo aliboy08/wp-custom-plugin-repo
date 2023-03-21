@@ -35,7 +35,6 @@ if( isset($_GET['check_plugin_updates'] ) ) {
 
     if( $have_updates ) {
         set_site_transient( 'update_plugins', $update_plugins, 10000 );
-        // update_site_option( $option, $update_plugins );
     } else {
 
         echo '<p>No updates</p>';
@@ -65,8 +64,6 @@ function ff_check_plugin_update( $plugin, $plugin_data ) {
         
         $remote = json_decode( $remote[ 'body' ] );
 
-        // pre_debug( $remote );
-        
         if ( $remote && version_compare( $plugin_data['Version'], $remote->version, '<' ) ) {
 
             $data['have_update'] = true;
